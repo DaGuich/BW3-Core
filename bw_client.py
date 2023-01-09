@@ -37,6 +37,8 @@ logging.debug("BOSWatch client has started ...")
 logging.debug("Import python modules")
 import argparse
 logging.debug("- argparse")
+import pathlib
+logging.debug("- pathlib")
 import queue
 logging.debug("- queue")
 import time
@@ -62,12 +64,14 @@ parser = argparse.ArgumentParser(prog="bw_client.py",
                                  decode german BOS information with rtl_fm and multimon-NG""",
                                  epilog="""More options you can find in the extern client.ini
                                  file in the folder /config""")
-parser.add_argument("-c", "--config", help="Name to configuration File", required=True)
+parser.add_argument("-c", "--config",
+                    help="Name to configuration File",
+                    type=pathlib.Path, required=True)
 parser.add_argument("-t", "--test", help="Start Client with testdata-set", action="store_true")
 args = parser.parse_args()
 
 bwConfig = ConfigYAML()
-if not bwConfig.loadConfigFile(paths.CONFIG_PATH + args.config):
+if not bwConfig.loadConfigFile(str(args.config)):
     logging.error("cannot load config file")
     exit(1)
 
