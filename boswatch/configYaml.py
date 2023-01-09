@@ -18,6 +18,8 @@ import logging
 import yaml
 import yaml.parser
 
+from .utils import paths
+
 logging.debug("- %s loaded", __name__)
 
 
@@ -28,7 +30,7 @@ class ConfigYAML:
 
     def __iter__(self):
         for item in self._config:
-            if type(item) is list or type(item) is dict:
+            if isinstance(item, (list, dict)):
                 yield ConfigYAML(item)
             else:
                 yield item
@@ -48,6 +50,8 @@ class ConfigYAML:
         @return True or False"""
         logging.debug("load config file from: %s", configPath)
         try:
+            if not paths.fileExist(configPath):
+                return False
             with open(configPath) as file:
                 # use safe_load instead load
                 self._config = yaml.safe_load(file)

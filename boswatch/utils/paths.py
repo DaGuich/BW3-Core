@@ -30,6 +30,8 @@ TEST_PATH = str(ROOT_PATH / "test/")
 
 
 def fileExist(filePath):
+    if isinstance(filePath, pathlib.Path):
+        return filePath.exists()
     return os.path.exists(filePath)
 
 
