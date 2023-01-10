@@ -33,7 +33,7 @@ def setup_method(method):
 def makeDescriptor():
     """!Build a descriptor object with loaded configuration"""
     config = ConfigYAML()
-    assert config.loadConfigFile(paths.TEST_PATH + "test_config.yaml") is True
+    assert config.loadConfigFile(paths.TEST_PATH / "test_config.yaml") is True
     descriptor = Descriptor(config.get("descriptor_test"))
     return descriptor
 

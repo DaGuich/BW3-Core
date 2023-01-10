@@ -24,9 +24,9 @@ logging.debug("- %s loaded", __name__)
 # ROOT_PATH = os.path.dirname(sys.modules['boswatch'].__file__).replace("\\", "/") + "/../"
 ROOT_PATH = pathlib.Path(__file__).parent.parent.parent
 
-LOG_PATH = str(ROOT_PATH / "log/")
-CONFIG_PATH = str(ROOT_PATH / "config/")
-TEST_PATH = str(ROOT_PATH / "test/")
+LOG_PATH = ROOT_PATH / "log/"
+CONFIG_PATH = ROOT_PATH / "config/"
+TEST_PATH = ROOT_PATH / "test/"
 
 
 def fileExist(filePath):

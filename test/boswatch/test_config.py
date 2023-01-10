@@ -37,23 +37,23 @@ def getConfig():
 def getFilledConfig():
     """!Build a config object and fill it with the config data"""
     filledConfig = ConfigYAML()
-    assert filledConfig.loadConfigFile(paths.TEST_PATH + "test_config.yaml") is True
+    assert filledConfig.loadConfigFile(paths.TEST_PATH / "test_config.yaml") is True
     return filledConfig
 
 
 def test_loadConfigFile(getConfig):
     """!load a config file"""
-    assert getConfig.loadConfigFile(paths.TEST_PATH + "test_config.yaml") is True
+    assert getConfig.loadConfigFile(paths.TEST_PATH / "test_config.yaml") is True
 
 
 def test_loadConfigFileFailed(getConfig):
     """!load a config file with syntax error"""
-    assert getConfig.loadConfigFile(paths.TEST_PATH + "test_configFailed.yaml") is False
+    assert getConfig.loadConfigFile(paths.TEST_PATH / "test_configFailed.yaml") is False
 
 
 def test_loadConfigFileNotFound(getConfig):
     """!load a config file where is not available"""
-    assert getConfig.loadConfigFile(paths.TEST_PATH + "test_configNotFound.yaml") is False
+    assert getConfig.loadConfigFile(paths.TEST_PATH / "test_configNotFound.yaml") is False
 
 
 def test_getConfigAsString(getFilledConfig):

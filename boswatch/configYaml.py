@@ -18,7 +18,7 @@ import logging
 import yaml
 import yaml.parser
 
-from .utils import paths
+from boswatch.utils import paths
 
 logging.debug("- %s loaded", __name__)
 
